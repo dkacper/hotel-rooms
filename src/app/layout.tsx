@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
-import { MantineProvider } from "@mantine/core";
-import { theme } from "./theme";
 import "@mantine/core/styles.css";
+import type { Metadata } from "next";
+import { ColorSchemeScript } from "@mantine/core";
+import { Providers } from "@/components/Providers";
 
 export const metadata: Metadata = {
   title: "Hotel Rooms App",
@@ -14,8 +14,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <ColorSchemeScript />
+      </head>
       <body>
-        <MantineProvider theme={theme}>{children}</MantineProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
