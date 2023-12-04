@@ -18,7 +18,6 @@ export class HotelRoomService extends APIService {
   > {
     try {
       const url = ENDPOINTS.rooms.compile({ query: { sort } });
-      console.log("sort", { sort, url });
       const { data } = await this.client.get(url);
       this.logger.log("Fetched room list.");
       return new HotelRoomsDataAdapter(data).mapToDomain().sort((a, b) => {

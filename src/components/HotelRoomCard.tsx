@@ -34,7 +34,7 @@ export function HotelRoomCard(props: HotelRoomCardProps) {
             <Group>
               <Text>{price.format()}</Text>
               {data.comparePrice && !price.isSame(data.comparePrice) && (
-                <Text>{data?.comparePrice?.format()}</Text>
+                <Text>{data.comparePrice?.format()}</Text>
               )}
             </Group>
             <Button
