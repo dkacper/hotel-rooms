@@ -13,12 +13,20 @@ const ENDPOINTS = {
 };
 
 export class HotelRoomService extends APIService {
-  public async getList(): Promise<HotelRoom[] | undefined> {
+  public async getList({ sort }: { sort?: string } = {}): Promise<
+    HotelRoom[] | undefined
+  > {
     try {
-      const url = ENDPOINTS.rooms.compile();
+      const url = ENDPOINTS.rooms.compile({ query: { sort } });
+      console.log("sort", { sort, url });
       const { data } = await this.client.get(url);
       this.logger.log("Fetched room list.");
-      return new HotelRoomsDataAdapter(data).mapToDomain();
+      return new HotelRoomsDataAdapter(data).mapToDomain().sort((a, b) => {
+        if (sort === "asc") {
+          return a.price.value - b.price.value;
+        }
+        return b.price.value - a.price.value;
+      });
     } catch (error) {
       if (error instanceof Error) {
         this.logger.error(error.message);
