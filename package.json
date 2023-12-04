@@ -13,6 +13,7 @@
     "@mantine/hooks": "^7.2.2",
     "@tanstack/react-query": "^5.10.0",
     "axios": "^1.6.2",
+    "easy-urls": "^1.0.1",
     "next": "14.0.3",
     "react": "^18",
     "react-dom": "^18",

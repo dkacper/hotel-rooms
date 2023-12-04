@@ -1,19 +1,26 @@
+import { Container, Stack, Title } from "@mantine/core";
 import { hotelRoomService } from "@/app/rooms/services/HotelRoomService";
-import { Stack, Text, Title } from "@mantine/core";
+import { HotelRoomCard } from "@/components/HotelRoomCard";
 
 export default async function Rooms() {
   const rooms = await hotelRoomService.getList();
   return (
     <main>
-      <Title order={1}>Hotel Rooms</Title>
-      <Stack>
-        {rooms?.map(({ id, name, price }) => (
-          <div key={id}>
-            <Text>{name}</Text>
-            <Text>{price.format()}</Text>
-          </div>
-        ))}
-      </Stack>
+      <Container>
+        <Title order={1} pb="md">
+          Hotel Rooms
+        </Title>
+        <Stack>
+          {rooms?.map(({ id, name, price }) => (
+            <HotelRoomCard
+              key={id}
+              id={id}
+              name={name}
+              priceDTO={price.toDTO()}
+            />
+          ))}
+        </Stack>
+      </Container>
     </main>
   );
 }

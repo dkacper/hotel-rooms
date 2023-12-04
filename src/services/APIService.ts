@@ -13,7 +13,9 @@ export class APIService {
   protected logger: Logger;
 
   constructor(
-    client: APIClient = axios.create({ baseURL: process.env.API_BASE_URL }),
+    client: APIClient = axios.create({
+      baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
+    }),
     logger: Logger = console
   ) {
     this.client = client;
