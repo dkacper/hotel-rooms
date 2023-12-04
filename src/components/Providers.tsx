@@ -1,10 +1,13 @@
 "use client";
 import { PropsWithChildren } from "react";
-import { MantineProvider } from "@mantine/core";
+import { MantineProvider, createTheme } from "@mantine/core";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { theme } from "@/app/theme";
 
 const queryClient = new QueryClient();
+
+export const theme = createTheme({
+  /* Put your mantine theme override here */
+});
 
 export function Providers({ children }: PropsWithChildren) {
   return (
